@@ -1,5 +1,3 @@
-
-
 $(document).ready(function() {
   const inputFileElement = document.getElementById("fileChooser");
   console.log("document loaded");
@@ -32,10 +30,17 @@ $(document).ready(function() {
 	  userCounts[user] = 1;
 	}
       });
+      let tableBodyStr = "";
       for (const key in userCounts) {
+	tableBodyStr += `<tr>\n<td>${key}</td>\n<td>${userCounts[key]}</td>\n</tr>\n`;
 	console.log(key);
 	console.log(userCounts[key]);
       }
+      $("#tableBodyTarget").html(tableBodyStr);
+      //Finally, load everything into the html
+
+
+
     }
     reader.readAsText(inputFile);
   })
