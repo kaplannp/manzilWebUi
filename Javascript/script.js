@@ -30,12 +30,24 @@ $(document).ready(function() {
 	  userCounts[user] = 1;
 	}
       });
+      //sort
+      const userCountsSorted = Object.entries(userCounts);
+      console.log(userCountsSorted[0]);
+      userCountsSorted.sort(function(a, b){
+	return b[1] - a[1] ;
+      });
+      console.log(userCountsSorted);
+
       let tableBodyStr = "";
-      for (const key in userCounts) {
-	tableBodyStr += `<tr>\n<td>${key}</td>\n<td>${userCounts[key]}</td>\n</tr>\n`;
-	console.log(key);
-	console.log(userCounts[key]);
+      for ( var i = 0; i < userCountsSorted.length; i++){
+        tableBodyStr += `<tr>\n<td>${userCountsSorted[i][0]}</td>\n<td>${userCountsSorted[i][1]}</td>\n</tr>\n`;
       }
+      //let tableBodyStr = "";
+      //for (const key in userCounts) {
+      //  tableBodyStr += `<tr>\n<td>${key}</td>\n<td>${userCounts[key]}</td>\n</tr>\n`;
+      //  console.log(key);
+      //  console.log(userCounts[key]);
+      //}
       $("#tableBodyTarget").html(tableBodyStr);
       //Finally, load everything into the html
 
